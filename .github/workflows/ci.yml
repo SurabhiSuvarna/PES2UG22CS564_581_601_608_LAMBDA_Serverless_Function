@@ -26,9 +26,5 @@ jobs:
 
     - name: Run basic FastAPI test
       run: |
-        echo "from fastapi.testclient import TestClient
-from main import app
-client = TestClient(app)
-response = client.get('/')
-assert response.status_code == 200" > test_temp.py
+        echo "from fastapi.testclient import TestClient\nfrom main import app\nclient = TestClient(app)\nresponse = client.get('/')\nassert response.status_code == 200" > test_temp.py
         python test_temp.py
