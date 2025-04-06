@@ -2,9 +2,9 @@ name: build-and-test
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -24,11 +24,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run basic FastAPI test
+    - name: Run FastAPI test
       run: |
-        echo "from fastapi.testclient import TestClient" > test_temp.py
-        echo "from main import app" >> test_temp.py
-        echo "client = TestClient(app)" >> test_temp.py
-        echo "response = client.get('/')" >> test_temp.py
-        echo "assert response.status_code == 200" >> test_temp.py
+        echo "from fastapi.testclient import TestClient\nfrom app import app\nclient = TestClient(app)\nresponse = client.get('/')\nassert response.status_code == 200" > test_temp.py
         python test_temp.py
