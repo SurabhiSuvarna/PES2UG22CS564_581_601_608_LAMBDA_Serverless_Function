@@ -1,0 +1,9 @@
+﻿# Python virtual environment
+backend/lambda_venv/
+backend/venv/
+backend/.venv/
+
+# Other Python artifacts
+__pycache__/
+*.py[cod]
+"* "
